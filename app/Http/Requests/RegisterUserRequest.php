@@ -37,7 +37,9 @@ class RegisterUserRequest extends FormRequest
 
             'gender' => 'required|in:male,female,other',
 
-            'terms_accepted' => "required|in:accepted"
+            'terms_accepted' => "required|in:accepted",
+            
+            "profile_for" => "required|in:self,son,daughter,brother,sister,friend,relative,other"
         ];
     }
 }

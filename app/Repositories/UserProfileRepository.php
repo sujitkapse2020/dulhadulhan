@@ -17,6 +17,7 @@ class UserProfileRepository implements UserProfileRepositoryInterface
             'last_name' => $profileDTO->lastName,
             'gender' => $profileDTO->gender,
             'dob' => $profileDTO->dateOfBirth->toDateString(),
+            'profile_for' => $profileDTO->profileFor,
         ]);
     }
 }
