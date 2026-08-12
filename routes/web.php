@@ -10,6 +10,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/artisan', function () {
+    $exitCode = \Artisan::call('config:cache');
+    return response()->json(['message' => 'COnfiguration cached cleared.']);
+});
+
 
 Route::get('/csrf-token', function () {
         $token = csrf_token();
