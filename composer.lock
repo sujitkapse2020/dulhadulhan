@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f03d0f693c6001451fe6691b291e3c57",
+    "content-hash": "715af059d7b9982081ccb31bd6f9590e",
     "packages": [
         {
             "name": "brick/math",
@@ -2082,6 +2082,50 @@
             "time": "2026-03-08T20:05:35+00:00"
         },
         {
+            "name": "mauricesvay/php-facedetection",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mauricesvay/php-facedetection.git",
+                "reference": "b016273ceceacd85562bbc50384fbabc947fe525"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mauricesvay/php-facedetection/zipball/b016273ceceacd85562bbc50384fbabc947fe525",
+                "reference": "b016273ceceacd85562bbc50384fbabc947fe525",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "FaceDetector.php",
+                    "Exception/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Maurice Svay",
+                    "homepage": "https://github.com/mauricesvay/php-facedetection/graphs/contributors"
+                }
+            ],
+            "description": "PHP class to detect one face in images. A pure PHP port of an existing JS code from Karthik Tharavad.",
+            "homepage": "https://github.com/mauricesvay/php-facedetection",
+            "support": {
+                "issues": "https://github.com/mauricesvay/php-facedetection/issues",
+                "source": "https://github.com/mauricesvay/php-facedetection/tree/master"
+            },
+            "abandoned": true,
+            "time": "2016-01-26T22:10:00+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.10.0",
             "source": {
@@ -2668,16 +2712,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v3.5.1",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/predis/predis.git",
-                "reference": "5c996db191ee2d9bafe651f454b1fca16754271b"
+                "reference": "2ff20c08bb63697245ffee3f198d1673086c302d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/predis/predis/zipball/5c996db191ee2d9bafe651f454b1fca16754271b",
-                "reference": "5c996db191ee2d9bafe651f454b1fca16754271b",
+                "url": "https://api.github.com/repos/predis/predis/zipball/2ff20c08bb63697245ffee3f198d1673086c302d",
+                "reference": "2ff20c08bb63697245ffee3f198d1673086c302d",
                 "shasum": ""
             },
             "require": {
@@ -2719,7 +2763,7 @@
             ],
             "support": {
                 "issues": "https://github.com/predis/predis/issues",
-                "source": "https://github.com/predis/predis/tree/v3.5.1"
+                "source": "https://github.com/predis/predis/tree/v3.6.0"
             },
             "funding": [
                 {
@@ -2727,7 +2771,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-11T16:56:53+00:00"
+            "time": "2026-08-14T23:07:56+00:00"
         },
         {
             "name": "psr/clock",

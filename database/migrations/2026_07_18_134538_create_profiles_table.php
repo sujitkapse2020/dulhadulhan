@@ -50,6 +50,7 @@ return new class extends Migration
             $table->string('eating_habits')->nullable();
             $table->string('drinking_habits')->nullable();
             $table->string('smoking_habits')->nullable();
+            
  
             $table->timestamps();
         });

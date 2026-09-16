@@ -34,7 +34,7 @@ class UserRepository implements UserRepositoryInterface
     public static function generateProfileNo(): string
     {
         do {
-            $profileNo = 'DD' . strtoupper(Str::random(8));
+            $profileNo = 'DD' . strtoupper(Str::random(6));
         } while (
             User::where('profile_no', $profileNo)->exists()
         );

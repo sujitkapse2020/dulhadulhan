@@ -28,7 +28,9 @@ class LoginTest extends TestCase
     {
         $this->createUser();
 
-        $response = $this->postJson('/api/auth/login', [
+        $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126.0.0.0 Safari/537.36';
+
+        $response = $this->withHeaders(['User-Agent' => $userAgent])->postJson('/api/auth/login', [
             'login' => 'jane@example.com',
             'password' => 'StrongPass@123',
         ]);
@@ -46,6 +48,9 @@ class LoginTest extends TestCase
 
         $this->assertDatabaseHas('login_histories', [
             'user_id' => User::where('email', 'jane@example.com')->value('id'),
+            'device' => $userAgent,
+            'browser' => 'Chrome/126.0.0.0',
+            'os' => 'Windows 10/11',
         ]);
     }
 
