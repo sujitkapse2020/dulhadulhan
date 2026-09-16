@@ -19,6 +19,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->string('image');
+            $table->string('path')->nullable();
             $table->boolean('is_profile')->default(false);
             $table->boolean('is_private')->default(false);
             $table->unsignedInteger('sort_order')->default(0);

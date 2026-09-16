@@ -7,14 +7,18 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Notifications\VerifyEmailNotification;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -25,14 +29,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'uuid',
         'profile_no',
         'name',
+        'first_name',
+        'last_name',
         'email',
         'mobile',
         'password',
         'role',
         'status',
+        'date_of_birth',
+        'gender',
         'email_verified_at',
         'mobile_verified_at',
         'last_login',
+        'delete_reason'
     ];
 
     /**
@@ -54,21 +63,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'email_verified_at' => 'datetime',
+            'mobile_verified_at' => 'datetime',
+            'password' => 'hashed',
         ];
-    }
-
-    public function sendEmailVerificationNotification(): void
-    {
-        $this->notify(new VerifyEmailNotification());
-    }
-
-    public function markEmailAsVerified(){
-        $this->email_verified_at = $this->freshTimestamp();
-        $this->save();
-    }
-
-    public function getEmailForVerification(): string
-    {
-        return $this->email;
     }
 }

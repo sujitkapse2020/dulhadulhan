@@ -9,6 +9,18 @@
 
 ## About Laravel
 
+## Profile photo face detection
+
+Profile photo uploads are validated before they are stored or queued. The validator uses PHP-Facedetect and accepts a detected face before processing the photo.
+
+Install the PHP detector with Composer:
+
+```text
+composer install
+```
+
+The detector data file is installed at `vendor/mauricesvay/php-facedetection/detection.dat`. Set `FACE_DETECTION_DATA` in `.env` only when the file is stored elsewhere. A rejected image returns HTTP `422`; missing detector configuration returns HTTP `503`.
+
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

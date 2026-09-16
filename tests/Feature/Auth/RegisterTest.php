@@ -3,11 +3,8 @@
 namespace Tests\Feature\Auth;
 
 use App\Mail\WelcomeMail;
-use App\Models\User;
-use App\Notifications\VerifyEmailNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -22,13 +19,12 @@ class RegisterTest extends TestCase
             'first_name' => 'Jane',
             'last_name' => 'Doe',
             'email' => 'jane@example.com',
-            'mobile' => '1234567890',
+            'mobile' => '+1234567890',
             'password' => 'StrongPass@123',
             'password_confirmation' => 'StrongPass@123',
             'date_of_birth' => '1990-01-01',
             'gender' => 'female',
-            'terms_accepted' => 'accepted',
-            'profile_for' => 'self',
+            'terms_accepted' => true,
         ]);
 
         $response->assertStatus(201)
@@ -41,29 +37,5 @@ class RegisterTest extends TestCase
         Mail::assertSent(WelcomeMail::class, function ($mail) {
             return $mail->hasTo('jane@example.com');
         });
-    }
-
-    public function test_user_registration_sends_verification_notification(): void
-    {
-        Notification::fake();
-
-        $response = $this->postJson('/api/auth/register', [
-            'first_name' => 'John',
-            'last_name' => 'Smith',
-            'email' => 'john@example.com',
-            'mobile' => '1987654321',
-            'password' => 'StrongPass@123',
-            'password_confirmation' => 'StrongPass@123',
-            'date_of_birth' => '1992-02-02',
-            'gender' => 'male',
-            'terms_accepted' => 'accepted',
-            'profile_for' => 'self',
-        ]);
-
-        $response->assertStatus(201);
-
-        $user = User::where('email', 'john@example.com')->firstOrFail();
-
-        Notification::assertSentTo($user, VerifyEmailNotification::class);
     }
 }

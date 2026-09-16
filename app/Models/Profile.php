@@ -36,4 +36,8 @@ class Profile extends Model
         'drinking_habits',
         'smoking_habits'
     ];
+
+    protected $casts = [
+        'dob' => 'date',
+    ];
 }

@@ -31,4 +31,9 @@ return [
         ],
     ],
 
+    'sms' => [
+        'endpoint' => env('SMS_ENDPOINT'),
+        'token' => env('SMS_TOKEN'),
+    ],
+
 ];
